@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './images/blockchain-logo.svg';
 import './styles/App.css';
-import Search from './components/search';
+import Widget from './components/widget/widget';
 
 class App extends Component {
   render() {
@@ -11,7 +11,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">BLOCKCHAIN Coding Challenge</h1>
         </header>
-        <Search/>
+        <Widget />
       </div>
     );
   }

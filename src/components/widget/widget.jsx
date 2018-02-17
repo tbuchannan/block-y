@@ -1,12 +1,15 @@
 import React from 'react';
-// 1FfmbHfnpaZjKFvyi1okTjJJusN455paPH
+import TransactionIndex from '../transactions/transactionIndex.jsx';
+import Balance from '../balance/balance.jsx';
 
-class Search extends React.Component {
+
+class Widget extends React.Component {
   constructor() {
     super();
     this.state = {
       address: "",
-      request: {},
+      info: {},
+      transactions: [],
       errors: null
     };
 
@@ -20,8 +23,8 @@ class Search extends React.Component {
     fetch(`/rawaddr/${this.state.address}`)
       .then(this.handleErrors)
       .then(result => result.json())
-      .then(data => this.setState({request: data}))
-      .catch(error => this.setState({request: {}, errors: error.toString()}));
+      .then(data => this.setState({info: data, transactions: data.txs}))
+      .catch(error => this.setState({info: {}, errors: error.toString()}));
   }
 
   handleChange(e) {
@@ -49,10 +52,10 @@ class Search extends React.Component {
           className = "searchButton"
           onClick={this.handleSubmit}>Search
         </button>
-        <p>{JSON.stringify(this.state.request)}</p>
-        <p>{JSON.stringify(this.state.errors)}</p>
+        <Balance info={this.state.info} />
+        <TransactionIndex transactions={this.state.transactions} />
       </div>
     );
   }
 }
-export default Search;
+export default Widget;
