@@ -1,5 +1,6 @@
 import React from 'react';
 import TransactionIndex from '../transactions/transactionIndex.jsx';
+import LiveTransactionIndex from '../livetransactions/liveTransactionIndex.jsx';
 import Balance from '../balance/balance.jsx';
 
 
@@ -53,9 +54,10 @@ class Widget extends React.Component {
           onClick={this.handleSubmit}>Search
         </button>
         <Balance info={this.state.info} />
-        <TransactionIndex transactions={this.state.transactions} />
+        <LiveTransactionIndex />
       </div>
     );
   }
 }
+// <TransactionIndex transactions={this.state.transactions} />
 export default Widget;
