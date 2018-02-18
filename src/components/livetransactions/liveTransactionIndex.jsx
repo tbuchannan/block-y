@@ -7,25 +7,25 @@ class LiveTransactionIndex extends React.Component {
     this.state = {
       transactions: []
     };
-    this.socket = new WebSocket('wss://echo.websocket.org');
   }
 
-  componentDidMount(){
+  componentDidMount() {
     // Event Listeners for socket events (Open, Close, Receive Message)
-    this.socket.onopen = () => {
+    this.props.socket.onopen = () => {
       console.log("CONNECTED");
     };
 
-    this.socket.onclose = () => {
+    this.props.socket.onclose = () => {
       console.log("DISCONNECTED");
     };
 
-    this.socket.onmessage = (message) => {
-      console.log(message.data);
+
+    this.props.socket.onmessage = (message) => {
+      console.log(message);
+      // TODO: setState, concat new message into transactions
     };
   }
 
-  // this.setState({transactions: this.state.messages.concat([ data ]})
   render() {
     return(
       <ul>
