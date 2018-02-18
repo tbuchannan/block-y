@@ -4,14 +4,9 @@ class TransactionItem extends React.Component {
 
   render() {
     const { info } = this.props;
+    let date = new Date(info.time * 1000);
     return (
-      <li>
-        <div>
-          Time:{new Date(info.time * 1000)}<br/>
-          Transaction number: {info.hash}
-        </div>
-
-      </li>
+      <li>Transaction number: {info.hash} <br/> {`${date.toLocaleDateString()} ${date.toLocaleTimeString()}`}</li>
     );
   }
 }
