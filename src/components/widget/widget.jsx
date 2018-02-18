@@ -1,5 +1,4 @@
 import React from 'react';
-import TransactionIndex from '../transactions/transactionIndex.jsx';
 import LiveTransactionIndex from '../livetransactions/liveTransactionIndex.jsx';
 import Balance from '../balance/balance.jsx';
 
@@ -13,7 +12,7 @@ class Widget extends React.Component {
       transactions: [],
       errors: null
     };
-
+    this.socket = new WebSocket('wss://ws.blockchain.info/inv');
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleErrors = this.handleErrors.bind(this);
@@ -21,11 +20,13 @@ class Widget extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.socket.send('{"op":"ping"}');
     fetch(`/rawaddr/${this.state.address}`)
       .then(this.handleErrors)
       .then(result => result.json())
       .then(data => this.setState({info: data, transactions: data.txs}))
       .catch(error => this.setState({info: {}, errors: error.toString()}));
+    // this.socket.send(`{"op":"addr_sub", "addr":"${this.state.address}"}`);
   }
 
   handleChange(e) {
@@ -53,8 +54,12 @@ class Widget extends React.Component {
           className = "searchButton"
           onClick={this.handleSubmit}>Search
         </button>
+
         <Balance info={this.state.info} />
-        <LiveTransactionIndex />
+        <LiveTransactionIndex
+          transactions={this.state.transactions}
+          socket={this.socket}/>
+        <p>{this.state.errors}</p>
       </div>
     );
   }
