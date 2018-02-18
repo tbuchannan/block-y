@@ -45,24 +45,19 @@ class Widget extends React.Component {
     return (
       <div>
         <input
-          className="searchBar"
           type="text"
+          className="searchBar"
           placeholder="Enter bitcoin address"
           onChange={this.handleChange}
         />
-        <button
-          className = "searchButton"
-          onClick={this.handleSubmit}>Search
-        </button>
-
+        <button className="search"onClick={this.handleSubmit}>Search </button>
         <Balance info={this.state.info} />
+
         <LiveTransactionIndex
           transactions={this.state.transactions}
           socket={this.socket}/>
-        <p>{this.state.errors}</p>
       </div>
     );
   }
 }
-// <TransactionIndex transactions={this.state.transactions} />
 export default Widget;
