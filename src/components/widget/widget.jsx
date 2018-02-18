@@ -10,6 +10,7 @@ class Widget extends React.Component {
       address: "",
       info: {},
       transactions: [],
+      subs: [],
       errors: null
     };
     this.socket = new WebSocket('wss://ws.blockchain.info/inv');
@@ -20,13 +21,12 @@ class Widget extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.socket.send('{"op":"ping"}');
+    this.socket.send(`{"op":"addr_sub", "addr":"${this.state.address}"}`);
     fetch(`/rawaddr/${this.state.address}`)
       .then(this.handleErrors)
       .then(result => result.json())
       .then(data => this.setState({info: data, transactions: data.txs}))
       .catch(error => this.setState({info: {}, errors: error.toString()}));
-    // this.socket.send(`{"op":"addr_sub", "addr":"${this.state.address}"}`);
   }
 
   handleChange(e) {
