@@ -21,16 +21,16 @@ class LiveTransactionIndex extends React.Component {
 
 
     this.props.socket.onmessage = (message) => {
-      console.log(message);
-      // TODO: setState, concat new message into transactions
+      let parsedMessage = JSON.parse(message.data);
+      this.setState({transactions: [parsedMessage].concat(this.state.transactions)});
     };
   }
 
   render() {
     return(
       <ul>
-        {this.state.transactions.map((item, idx) =>
-            <LiveTransactionItem key={idx} />
+        {this.state.transactions.map((data, idx) =>
+            <LiveTransactionItem key={idx} data={data}/>
           )}
       </ul>
     );
