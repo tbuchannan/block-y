@@ -1,4 +1,18 @@
-.transactionContainer {
+.infoContainer {
   display: flex;
   justify-content: space-around;
+}
+
+.transIndex {
+  width: 60%;
+}
+
+.greyBar {
+  background-color: rgb(189, 189, 189);
+  height: 4px;
+  width: 100%;
+}
+
+.hidden {
+  display: none;
 }
