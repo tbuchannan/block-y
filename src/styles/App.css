@@ -3,6 +3,7 @@
 
 .App {
   text-align: center;
+  min-width: 1165px
 }
 
 .App-logo {
