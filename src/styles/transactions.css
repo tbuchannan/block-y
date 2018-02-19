@@ -1,0 +1,10 @@
+.listIndex {
+  list-style: none;
+  padding: 5px;
+  width: 50%;
+}
+
+.transPaper {
+  padding: 1em;
+  margin: 10px;
+}
