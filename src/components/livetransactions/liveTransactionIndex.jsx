@@ -1,11 +1,12 @@
 import React from 'react';
 import LiveTransactionItem from './liveTransactionItem.jsx';
+import '../../styles/transactions.css';
 
 class LiveTransactionIndex extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      transactions: []
+      liveTransactions: [],
     };
   }
 
@@ -22,14 +23,15 @@ class LiveTransactionIndex extends React.Component {
 
     this.props.socket.onmessage = (message) => {
       let parsedMessage = JSON.parse(message.data);
-      this.setState({transactions: [parsedMessage].concat(this.state.transactions)});
+      this.setState({liveTransactions: [parsedMessage].concat(this.state.liveTransactions)});
     };
   }
 
   render() {
-    return(
-      <ul>
-        {this.state.transactions.map((data, idx) =>
+    return this.props.isLoading ? null : (
+      <ul className="listIndex">
+        <label>Incoming Transactions</label>
+        {this.state.liveTransactions.map((data, idx) =>
             <LiveTransactionItem key={idx} data={data}/>
           )}
       </ul>

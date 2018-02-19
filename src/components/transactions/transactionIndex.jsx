@@ -3,9 +3,10 @@ import TransactionItem from './transactionItem.jsx';
 
 class TransactionIndex extends React.Component {
   render() {
-    const { transactions } = this.props;
-    return(
-      <ul>
+    const { isLoading, transactions } = this.props;
+    return isLoading ? null : (
+      <ul className="listIndex">
+        <label>Transactions</label>
         {transactions.map((item, idx) =>
             <TransactionItem key={idx} info={item} random={idx} />
           )}
