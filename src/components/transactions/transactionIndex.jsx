@@ -1,37 +1,44 @@
 import React from 'react';
 import TransactionItem from './transactionItem.jsx';
-import '../../styles/transactions.css';
 import {
   Table,
   TableBody,
   TableHeader,
   TableHeaderColumn,
-  TableRow
+  TableRow,
 } from 'material-ui/Table';
+import '../../styles/transactions.css';
 
 class TransactionIndex extends React.Component {
   render() {
-    const { isLoading, transactions } = this.props;
     const centerCol = {textAlign: 'center'};
-    return isLoading ? null : (
+    const { transactions } = this.props;
+    const hashStyle = {
+      textAlign: 'center',
+      paddingLeft: '30%',
+      };
+    const sizeStyle = {textAlign: 'center', paddingLeft: '12%',};
+    const timeStyle = {textAlign: 'center', paddingLeft: '32%',};
+
+    return (
       <div className="listIndex">
         <Table  fixedFooter={false} height={'300px'}>
           <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
             <TableRow>
               <TableHeaderColumn
                 style={centerCol}
-                colSpan="3"> Transactions
+                colSpan="3"> Incoming Transactions
               </TableHeaderColumn>
             </TableRow>
             <TableRow>
-              <TableHeaderColumn style={centerCol}>Transaction</TableHeaderColumn>
-              <TableHeaderColumn style={centerCol}>Received Time</TableHeaderColumn>
-              <TableHeaderColumn style={centerCol}>Received Date</TableHeaderColumn>
+              <TableHeaderColumn style={hashStyle}>Hash</TableHeaderColumn>
+              <TableHeaderColumn style={timeStyle}>Received Time</TableHeaderColumn>
+              <TableHeaderColumn style={sizeStyle}>Size</TableHeaderColumn>
             </TableRow>
           </TableHeader>
           <TableBody displayRowCheckbox={false}>
-            {transactions.map((item, idx) =>
-              <TransactionItem key={idx} info={item} rowKey={idx} />
+            {transactions.map((data, idx) =>
+              <TransactionItem key={idx} data={data} rowKey={idx}/>
             )}
           </TableBody>
         </Table>
@@ -39,5 +46,4 @@ class TransactionIndex extends React.Component {
     );
   }
 }
-
 export default TransactionIndex;
