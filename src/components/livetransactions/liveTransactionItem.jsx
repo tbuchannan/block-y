@@ -1,21 +1,25 @@
 import React from 'react';
 import Paper from 'material-ui/Paper';
 import '../../styles/transactions.css';
+import {
+  Table,
+  TableBody,
+  TableHeader,
+  TableHeaderColumn,
+  TableRow,
+  TableRowColumn,
+} from 'material-ui/Table';
 
 class LiveTransactionItem extends React.Component {
   render() {
-    const { data } = this.props;
+    const { data, rowKey} = this.props;
     let date = new Date(data.x.time * 1000);
     return (
-      <li className="listItem">
-        <Paper className="paper" zDepth={1} >
-        <label>Hash: {data.x.hash}</label><br/>
-        <label>
-          Received Time: {date.toLocaleTimeString()} {date.toLocaleDateString()}
-        </label><br/>
-        <label>Size: {data.x.size} (in bytes)</label>
-        </Paper>
-      </li>
+      <TableRow key={rowKey}>
+        <TableRowColumn style={{textAlign: 'center'}}>{data.x.hash}</TableRowColumn>
+        <TableRowColumn style={{textAlign: 'center'}}>{date.toLocaleDateString()}</TableRowColumn>
+        <TableRowColumn style={{textAlign: 'center'}}>{date.toLocaleTimeString()}</TableRowColumn>
+      </TableRow>
     );
   }
 }
