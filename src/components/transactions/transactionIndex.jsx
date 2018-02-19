@@ -1,14 +1,12 @@
 import React from 'react';
 import TransactionItem from './transactionItem.jsx';
-import List from 'material-ui/List';
 import '../../styles/transactions.css';
 import {
   Table,
   TableBody,
   TableHeader,
   TableHeaderColumn,
-  TableRow,
-  TableRowColumn,
+  TableRow
 } from 'material-ui/Table';
 
 class TransactionIndex extends React.Component {

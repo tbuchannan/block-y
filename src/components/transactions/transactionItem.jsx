@@ -1,15 +1,6 @@
 import React from 'react';
-import Paper from 'material-ui/Paper';
 import '../../styles/transactions.css';
-import ListItem from 'material-ui/List';
-import {
-  Table,
-  TableBody,
-  TableHeader,
-  TableHeaderColumn,
-  TableRow,
-  TableRowColumn,
-} from 'material-ui/Table';
+import { TableRow, TableRowColumn } from 'material-ui/Table';
 
 class TransactionItem extends React.Component {
   render() {
@@ -25,11 +16,3 @@ class TransactionItem extends React.Component {
   }
 }
 export default TransactionItem;
-
-// <ListItem>
-//   <Paper className="transPaper" zDepth={1} >
-//     <label>Transaction number: {info.hash} </label>
-//
-//     <label>Received Time: {} {}</label>
-//   </Paper>
-// </ListItem>

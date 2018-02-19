@@ -1,14 +1,6 @@
 import React from 'react';
-import Paper from 'material-ui/Paper';
 import '../../styles/transactions.css';
-import {
-  Table,
-  TableBody,
-  TableHeader,
-  TableHeaderColumn,
-  TableRow,
-  TableRowColumn,
-} from 'material-ui/Table';
+import { TableRow, TableRowColumn } from 'material-ui/Table';
 
 class LiveTransactionItem extends React.Component {
   render() {
