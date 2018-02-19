@@ -22,7 +22,7 @@ class Balance extends React.Component {
       <div className="balance">
         <Paper className="paper" zDepth={1} >
           <List>
-            <ListItem key={balanceKeys[4]} nestedItems={balanceInfo}>Balance</ListItem>
+            <ListItem key={balanceKeys[4]} open={true} nestedItems={balanceInfo}>Balance</ListItem>
           </List>
         </Paper>
       </div>
