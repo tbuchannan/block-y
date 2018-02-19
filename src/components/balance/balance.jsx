@@ -6,6 +6,7 @@ import Divider from 'material-ui/Divider';
 
 class Balance extends React.Component {
   // TODO: refactor keys, to be more unique and not hardcoded
+  // TODO: change to Table, Paper is ugly
   render() {
     const {info} = this.props;
     const balanceKeys = [1, 2, 3, 4, 5];
