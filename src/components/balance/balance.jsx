@@ -22,10 +22,10 @@ class Balance extends React.Component {
             <Divider />
             <ListItem
               nestedItems={[
-                <ListItem>Address: {this.props.info.address}</ListItem>,
-                <ListItem>Total Received: {this.props.info.total_received / 100000000} BTC</ListItem>,
-                <ListItem>Total Sent: {this.props.info.total_sent / 100000000} BTC</ListItem>,
-                <ListItem>Remaining Balance: {this.props.info.final_balance / 100000000} BTC</ListItem>,
+                <ListItem key={info.address}>Address: {info.address}</ListItem>,
+                <ListItem key={info.total_received}>Total Received: {info.total_received / 100000000} BTC</ListItem>,
+                <ListItem key={info.total_sent}>Total Sent: {info.total_sent / 100000000} BTC</ListItem>,
+                <ListItem key={info.final_balance}>Remaining Balance: {info.final_balance / 100000000} BTC</ListItem>,
               ]}/>
           </List>
         </Paper>
