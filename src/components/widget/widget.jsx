@@ -40,29 +40,34 @@ class Widget extends React.Component {
     };
   }
 
+  // API request to fetch balanceInfo of bitcoin address
   fetchBalance() {
-    fetch(`/rawaddr/${this.state.address}`)
+    fetch(`rawaddr/${this.state.address}`)
       .then(this.handleErrors)
       .then(result => result.json())
       .then(data => this.setState({balance: data, transactions: data.txs, isLoading: false, address: "", errors: null}))
       .catch(error => this.setState({balance: {}, errors: error.toString(), isLoading: false, address: ""}));
   }
 
+  // Subscribes to address
   handleSubmit(e) {
     e.preventDefault();
     this.socket.send(`{"op":"addr_sub", "addr":"${this.state.address}"}`);
     this.setState({isLoading: true}, this.fetchBalance);
   }
 
+  // Updates textfield
   handleChange(e) {
     e.preventDefault();
     this.setState({address: e.target.value});
   }
 
+  // Add incoming transactions into the transactions state
   handleMessage(newTx){
     this.setState({transactions: [newTx].concat(this.state.transactions)});
   }
 
+  // Throws error if response is an error
   handleErrors(resp) {
     if (!resp.ok) {
       throw Error(resp.statusText);

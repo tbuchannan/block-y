@@ -20,6 +20,7 @@ class TransactionIndex extends React.Component {
     const sizeStyle = {textAlign: 'center', paddingLeft: '12%',};
     const timeStyle = {textAlign: 'center', paddingLeft: '32%',};
 
+    // Iterate over transactions and add a table row for each transaction
     return (
       <div className="listIndex">
         <Table  fixedFooter={false} height={'300px'}>

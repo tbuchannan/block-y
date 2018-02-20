@@ -5,7 +5,9 @@ import Widget from './components/widget/widget';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class App extends Component {
+
   render() {
+    // Wrap in MaterialUI Provider
     return (
       <MuiThemeProvider>
         <div className="App">

@@ -12,6 +12,7 @@ class TransactionItem extends React.Component {
       wordWrap: 'break-word'};
     let date = new Date(56564454556 * 1000);
 
+    // Parse transaction data and display as row
     return (
       <TableRow key={rowKey}>
         <TableRowColumn style={hashStyle}>{data.hash}</TableRowColumn>
