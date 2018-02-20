@@ -45,26 +45,26 @@ class Widget extends React.Component {
     fetch(`rawaddr/${this.state.address}`)
       .then(this.handleErrors)
       .then(result => result.json())
-      .then(data => this.setState({balance: data, transactions: data.txs, isLoading: false, address: "", errors: null}))
-      .catch(error => this.setState({balance: {}, errors: error.toString(), isLoading: false, address: ""}));
+      .then(data => this.setState({ balance: data, transactions: data.txs, isLoading: false, address: "", errors: null }))
+      .catch(error => this.setState({ balance: {}, errors: error.toString(), isLoading: false, address: "" }));
   }
 
   // Subscribes to address
   handleSubmit(e) {
     e.preventDefault();
     this.socket.send(`{"op":"addr_sub", "addr":"${this.state.address}"}`);
-    this.setState({isLoading: true}, this.fetchBalance);
+    this.setState({ isLoading: true }, this.fetchBalance);
   }
 
   // Updates textfield
   handleChange(e) {
     e.preventDefault();
-    this.setState({address: e.target.value});
+    this.setState({ address: e.target.value });
   }
 
   // Add incoming transactions into the transactions state
   handleMessage(newTx){
-    this.setState({transactions: [newTx].concat(this.state.transactions)});
+    this.setState({ transactions: [newTx].concat(this.state.transactions) });
   }
 
   // Throws error if response is an error
@@ -76,28 +76,28 @@ class Widget extends React.Component {
   }
 
   render() {
-    const style = !this.state.isLoading ? {display: 'none'} : null;
+    const style = !this.state.isLoading ? { display: 'none' } : null;
     const barStyle = this.state.isLoading ? "hidden" : "greyBar";
     return (
       <div>
-        <LinearProgress style={style} mode="indeterminate" />
-        <div className={barStyle}></div>
+        <LinearProgress style={ style } mode="indeterminate" />
+        <div className={ barStyle }></div>
         <div className ="searchContainer">
           <TextField
             hintText="Enter bitcoin address"
-            errorText={this.state.errors}
-            onChange={this.handleChange}
-            value={this.state.address}
+            errorText={ this.state.errors }
+            onChange={ this.handleChange }
+            value={ this.state.address }
           />
         <br/>
-          <RaisedButton label="Search" primary={true} onClick={this.handleSubmit}/>
+          <RaisedButton label="Search" primary={ true } onClick={ this.handleSubmit }/>
         </div>
         <div className="infoContainer">
           <TransactionIndex
             className="transIndex"
-            transactions={this.state.transactions}
-            handleMessage={this.handleMessage}/>
-          <Balance info={this.state.balance}/>
+            transactions={ this.state.transactions }
+            handleMessage={ this.handleMessage }/>
+          <Balance info={ this.state.balance }/>
         </div>
       </div>
     );
