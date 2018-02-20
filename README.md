@@ -14,7 +14,12 @@ cd blockchain-cc
 
 3. install dependencies using npm or yarn   
 ```
-yarn start
+yarn install or npm install
+```
+
+4. run
+```
+yarn start or npm start
 ```
 
 #### TODO:
