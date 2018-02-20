@@ -46,7 +46,13 @@ class Widget extends React.Component {
       .then(this.handleErrors)
       .then(result => result.json())
       .then(data => this.setState({ balance: data, transactions: data.txs, isLoading: false, address: "", errors: null }))
-      .catch(error => this.setState({ balance: {}, errors: error.toString(), isLoading: false, address: "" }));
+      .catch(error => this.setState({
+        balance: {},
+        transactions: [],
+        errors: error.toString(),
+        isLoading: false,
+        address: ""
+      }));
   }
 
   // Subscribes to address
@@ -71,7 +77,7 @@ class Widget extends React.Component {
   handleErrors(resp) {
     if (!resp.ok) {
       throw Error(resp.statusText);
-    }
+    }``
     return resp;
   }
 
