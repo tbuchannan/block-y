@@ -77,7 +77,7 @@ class Widget extends React.Component {
   handleErrors(resp) {
     if (!resp.ok) {
       throw Error(resp.statusText);
-    }``
+    }
     return resp;
   }
 
