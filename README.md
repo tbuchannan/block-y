@@ -1,6 +1,6 @@
 ## block-y
 
-[Live link](block-y.herokuapp.com)
+[Live link](http://block-y.herokuapp.com)
 
 1. clone repo   
 ```
