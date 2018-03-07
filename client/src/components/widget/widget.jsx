@@ -41,8 +41,10 @@ class Widget extends React.Component {
   }
 
   // API request to fetch balanceInfo of bitcoin address
+  // 1FfmbHfnpaZjKFvyi1okTjJJusN455paPH
+  //
   fetchBalance() {
-    fetch(`rawaddr/${this.state.address}`)
+    fetch(`/api/blockchain/${this.state.address}`)
       .then(this.handleErrors)
       .then(result => result.json())
       .then(data => this.setState({ balance: data, transactions: data.txs, isLoading: false, address: "", errors: null }))
