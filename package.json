@@ -10,14 +10,14 @@
   },
   "cacheDirectories": [
     "node_modules",
-    "react-ui/node_modules"
+    "client/node_modules"
   ],
   "dependencies": {
     "express": "^4.16.2"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/tbuchannan/blockchain-cc.git"
+    "url": "https://github.com/tbuchannan/block-y.git"
   },
   "keywords": [
     "node",
