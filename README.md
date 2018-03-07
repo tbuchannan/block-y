@@ -19,13 +19,9 @@ yarn install or npm install
 
 4. run
 ```
-yarn dev
+yarn dev or npm run dev
 ```
 
-  or
-```
-npm run dev
-```
 
 #### TODO:
 * Refactor keys on Balance Component, to be more unique and not hardcoded
