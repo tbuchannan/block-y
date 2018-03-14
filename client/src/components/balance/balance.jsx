@@ -5,8 +5,14 @@ import { List, ListItem } from 'material-ui/List';
 import Divider from 'material-ui/Divider';
 
 class Balance extends React.Component {
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.props.info.address !== nextProps.info.address ||
+    this.props.info.total_received !== nextProps.info.total_received ||
+    this.props.info.total_sent !== nextProps.info.total_sent ||
+    this.props.info.final_balance !== nextProps.info.final_balance ? true : false;
+  }
   render() {
-    const {info} = this.props;
+    const { info } = this.props;
     const balanceKeys = [1, 2, 3, 4, 5];
     const balanceInfo = !info.address ? [] : [
       <Divider />,
